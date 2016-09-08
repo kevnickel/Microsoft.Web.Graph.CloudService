@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Microsoft.Web.Graph.WebRole" version="2.9.6499.4" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <Runtime>
+    <EntryPoint>
+      <NetFxEntryPoint assemblyName="Microsoft.Web.Graph.WebRole.dll" targetFrameworkVersion="v4.0" />
+    </EntryPoint>
+  </Runtime>
+  <Properties>
+    <Property name="TargetFrameworkVersion" value="v4.5.1" />
+    <Property name="RoleType" value="Web" />
+    <Property name="RoleName" value="Microsoft.Web.Graph.WebRole" />
+    <Property name="ProjectName" value="Microsoft.Web.Graph.WebRole" />
+    <Property name="Configuration" value="Release" />
+    <Property name="Platform" value="AnyCPU" />
+    <Property name="SetConfiguration" value="Configuration=Release" />
+    <Property name="SetPlatform" value="Platform=AnyCPU" />
+    <Property name="RoleTargetFramework" value="v4.5.1" />
+    <Property name="OutputDir" value="E:\UniversalHeader\Microsoft.Web.Graph\Microsoft.Web.Graph\Microsoft.Web.Graph.CloudService\Microsoft.Web.Graph.CloudService\obj\Release\Microsoft.Web.Graph.WebRole\" />
+    <Property name="EntryPoint" value="Microsoft.Web.Graph.WebRole.dll" />
+    <Property name="SourceDir" value="E:\UniversalHeader\Microsoft.Web.Graph\Microsoft.Web.Graph\Microsoft.Web.Graph.CloudService\Microsoft.Web.Graph.WebRole\" />
+    <Property name="SitePhysicalPath" value="E:\UniversalHeader\Microsoft.Web.Graph\Microsoft.Web.Graph\Microsoft.Web.Graph.CloudService\Microsoft.Web.Graph.CloudService\obj\Release\Microsoft.Web.Graph.WebRole\" />
+    <Property name="TargetRuntimeVersion" value="v4.0" />
+  </Properties>
+  <Sites>
+    <Site name="Web" physicalDirectory="E:\UniversalHeader\Microsoft.Web.Graph\Microsoft.Web.Graph\Microsoft.Web.Graph.CloudService\Microsoft.Web.Graph.CloudService\obj\Release\Microsoft.Web.Graph.WebRole\">
+      <Bindings>
+        <Binding name="Endpoint1" endpointName="Endpoint1" />
+      </Bindings>
+    </Site>
+  </Sites>
+</RoleModel>

@@ -1,0 +1,1 @@
+bin\Microsoft.Web.Graph.WebRole.dll
