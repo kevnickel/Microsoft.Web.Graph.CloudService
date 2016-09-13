@@ -6,14 +6,14 @@ using System.Web.Mvc;
 
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
-    public class GraphExplorerController : Controller
+    public class GraphExplorerController : BaseController
     {
         //
         // GET: /GraphExplorer/
 
         public ActionResult Index()
         {
-            HttpContext.Response.ContentType = "text/html";
+            base.SetAppropriateContentType();
             return View();
         }
 
