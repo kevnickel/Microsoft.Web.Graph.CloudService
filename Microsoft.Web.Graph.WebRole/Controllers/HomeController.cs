@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            HttpContext.Response.ContentType = "text/fdxml";
+            base.SetAppropriateContentType();
             return View();
         }
 
