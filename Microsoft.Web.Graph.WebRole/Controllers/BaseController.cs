@@ -10,7 +10,7 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
     {
         protected void SetAppropriateContentType()
         {
-            HttpContext.Response.ContentType = "text/html";
+            HttpContext.Response.ContentType = "text/fdxml";
         }
     }
 }
