@@ -154,6 +154,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DocPageController.cs" />
     <Compile Include="Controllers\GraphExplorerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\FrontDoorCertValidator.cs" />
@@ -161,7 +162,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DocMeta.cs" />
+    <Compile Include="Models\DocSets.cs" />
+    <Compile Include="Models\Toc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\TocManager.cs" />
+    <Compile Include="Util\XmlReader.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +232,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\GraphExplorer\Index.cshtml" />
+    <Content Include="Views\DocPage\GetDocPage.cshtml" />
+    <Content Include="Views\DocPage\_DocContent.cshtml" />
+    <Content Include="Views\DocPage\_DocToc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
