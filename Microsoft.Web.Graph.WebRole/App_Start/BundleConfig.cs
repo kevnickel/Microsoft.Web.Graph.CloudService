@@ -27,12 +27,12 @@ namespace Microsoft.Web.Graph.WebRole
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/graph-explorer-styles").Include(
+            bundles.Add(new StyleBundle("~/bundles/graph-explorer-styles").Include(
                     "~/Content/graph-explorer-styles/bootstrap.css",
                     "~/Content/graph-explorer-styles/api-explorer.css",
                     "~/Content/graph-explorer-styles/ngProgress.css"
                     ));
-            bundles.Add(new ScriptBundle("~/Scripts/graph-explorer-scripts").Include(
+            bundles.Add(new ScriptBundle("~/bundles/graph-explorer-scripts").Include(
                 "~/Scripts/graph-explorer-scripts/angular.js",
                 "~/Scripts/graph-explorer-scripts/angular-animate.js",
                 "~/Scripts/graph-explorer-scripts/angular-route.js",
@@ -51,11 +51,11 @@ namespace Microsoft.Web.Graph.WebRole
                 "~/Scripts/graph-explorer-scripts/bower-components/angular-bootstrap/ui-bootstrap-tpls.js",
                 "~/Scripts/graph-explorer-scripts/bower-components/angular-bootstrap/ui-bootstrap-tpls.min.js"
                 ));
-            bundles.Add(new ScriptBundle("~/Scripts/graph-explorer-scripts/aceCDN",
+            bundles.Add(new ScriptBundle("~/bundles/graph-explorer-scripts/aceCDN",
                 "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js")
                 .Include("~/Scripts/graph-explorer-scripts/ace.js"));
 
-            bundles.Add(new ScriptBundle("~/Scripts/graph-explorer-scripts/mode-js-cdn",
+            bundles.Add(new ScriptBundle("~/bundles/graph-explorer-scripts/mode-js-cdn",
                 "https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/mode-javascript.js")
                 .Include("~/Scripts/graph-explorer-scripts/mode-javascript.js"));
 
