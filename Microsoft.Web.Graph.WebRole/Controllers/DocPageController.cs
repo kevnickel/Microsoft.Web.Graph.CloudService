@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using DynamicDocs.Util;
 using DynamicDocs.Models;
 
-namespace DynamicDocs.Controllers
+namespace Microsoft.Web.Graph.WebRole.Controllers
 {
     public class DocPageController: Controller
     {
@@ -26,6 +26,36 @@ namespace DynamicDocs.Controllers
             }
             HttpContext.Response.ContentType = "text/fdxml";
             return View(model);
+        }
+
+        public ActionResult NotFound()
+        {
+            string originalUrl = Request.RawUrl.ToLower();
+            if(originalUrl.StartsWith("/en-us/"))
+            {
+                return View();
+            }
+            else
+            {
+                Response.Redirect("/en-us/" + GetUrlWithOutCulture(originalUrl));
+            }
+            return null;
+        }
+
+        private string GetUrlWithOutCulture(string url)
+        {
+            List<string> cultures = new List<string>();
+            cultures.Add("/ja-jp/");
+            cultures.Add("/zh-cn/");
+            cultures.Add("/de-de/");
+            foreach (string culture in cultures)
+            {
+                if (url.StartsWith(culture))
+                {
+                    return url.Substring(6);
+                }
+            }
+            return url;
         }
     }
 }

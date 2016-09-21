@@ -235,10 +235,10 @@
     <Content Include="Views\DocPage\GetDocPage.cshtml" />
     <Content Include="Views\DocPage\_DocContent.cshtml" />
     <Content Include="Views\DocPage\_DocToc.cshtml" />
+    <Content Include="Views\DocPage\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
