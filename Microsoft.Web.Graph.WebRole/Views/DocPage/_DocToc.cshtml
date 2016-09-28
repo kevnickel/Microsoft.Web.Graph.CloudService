@@ -4,27 +4,43 @@
     Cache["SubMenuCount"] = 0;
 }
 
-@helper DisplayMenu(TocItem[] items)
+@helper DisplayMenu(TocItem[] items,string urlPrefix)
 {
-    foreach (TocItem item in items)
+foreach (TocItem item in items)
+{
+    if (string.IsNullOrEmpty(item.text) || string.IsNullOrEmpty(item.url))
     {
-        if ((!string.IsNullOrEmpty(item.text)) && (!string.IsNullOrEmpty(item.url)))
+        return;
+    }
+    string selected = "";
+    string collapseSwitch = "collapse";
+    if(item.url.Equals(Model.DocPath))
+    {
+        selected = "active";
+    }
+    else if(item.Children!=null&&item.Children.Contains(";"+Model.DocPath+";"))
+    {
+        collapseSwitch += " in";
+    }
+
+    if ((!string.IsNullOrEmpty(item.text)) && (!string.IsNullOrEmpty(item.url)))
+    {
+        if (item.TocItem1 != null && item.TocItem1.Length > 0)
         {
-            if (item.TocItem1 != null && item.TocItem1.Length > 0)
-            {
-                Cache["SubMenuCount"] = (int)Cache["SubMenuCount"] + 1;
-                string ulId = "item" + Cache["SubMenuCount"];
+            Cache["SubMenuCount"] = (int)Cache["SubMenuCount"] + 1;
+            string ulId = "item" + Cache["SubMenuCount"];
                 <li aria-label="@item.text">
-                    <a style="text-transform: uppercase; font-weight:bold; font-size 12px !important;" data-target="#@ulId">@item.text</a>
-                    <ul id="@ulId" class="collapse">
-                        @DisplayMenu(item.TocItem1)
+                    <a class="@selected" style="text-transform: uppercase; font-weight:bold; font-size 12px !important;" data-target="#@ulId">@item.text</a>
+                    <ul id="@ulId" class="@collapseSwitch @selected">
+                        @DisplayMenu(item.TocItem1,urlPrefix)
                     </ul>
                 </li>
-            }
-            else
-            {
+        }
+        else
+        {
+            string finalUrl = urlPrefix + item.url;
                 <li aria-label="@item.text">
-                    <a href="@item.url">@item.text</a>
+                    <a class="@selected" href="@finalUrl">@item.text</a>
                 </li>
             }
         }
@@ -32,11 +48,11 @@
 }
 
 <div id="docNavMenu" style="margin: 60px 10px 5px; width: 400px; float: left; position: static;">
-    @if (@Model.CurrentDocSets.Item[1].Filter != null)
+    @if ( @Model.CurrentDocSet!=null&& @Model.CurrentDocSet.Filter != null)
     {
         <div id="filters" style="width:100%">
 
-            @foreach (DocSetsItemFilter filter in @Model.CurrentDocSets.Item[1].Filter)
+            @foreach (DocSetsItemFilter filter in @Model.CurrentDocSet.Filter)
             {
                 <div id="filter_@filter.Name">
                     <select>
@@ -56,7 +72,7 @@
 
     <nav class="nav-blade">
         <ul class="home-nav-List nav-list">
-            @DisplayMenu(@Model.DocToc.TocItem)
+            @DisplayMenu(@Model.DocToc.TocItem,Model.DocToc.UrlPrefix)
         </ul>
     </nav>
 </div>

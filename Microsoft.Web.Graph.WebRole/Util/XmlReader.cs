@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 using System.IO;
 
 
-namespace DynamicDocs.Util
+namespace Microsoft.Web.Graph.WebRole.Util
 {
     public class XmlReader
     {
