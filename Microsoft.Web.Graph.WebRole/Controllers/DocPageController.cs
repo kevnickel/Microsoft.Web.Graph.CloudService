@@ -8,7 +8,7 @@ using DynamicDocs.Models;
 
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
-    public class DocPageController : Controller
+    public class DocPageController : BaseController
     {
         public ActionResult GetDocPage(string culture, string docPath)
         {
