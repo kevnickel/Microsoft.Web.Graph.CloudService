@@ -7,8 +7,8 @@
     <ProjectGuid>{AC114012-37CB-427F-B981-93F8BABA2306}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Web.Porrtal.Common</RootNamespace>
-    <AssemblyName>Microsoft.Web.Porrtal.Common</AssemblyName>
+    <RootNamespace>Microsoft.Web.Portal.Common</RootNamespace>
+    <AssemblyName>Microsoft.Web.Portal.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -8,12 +8,19 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
 {
     public class GraphExplorerController : BaseController
     {
+        private string _viewName = "GraphExplorer";
+
+        public string ViewName
+        {
+            get { return _viewName = "GraphExplorer"; }
+        }
+
         //
         // GET: /GraphExplorer/
 
         public ActionResult Index()
         {
-            return View();
+            return View(_viewName);
         }
 
     }

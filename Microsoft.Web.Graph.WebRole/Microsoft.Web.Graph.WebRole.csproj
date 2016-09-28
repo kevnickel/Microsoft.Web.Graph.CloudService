@@ -70,8 +70,8 @@
       <HintPath>..\packages\Microsoft.Web.Administration.7.0.0.0\lib\net20\Microsoft.Web.Administration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Porrtal.Common">
-      <HintPath>..\Microsoft.Web.Porrtal.Common\bin\Debug\Microsoft.Web.Porrtal.Common.dll</HintPath>
+    <Reference Include="Microsoft.Web.Portal.Common">
+      <HintPath>..\Microsoft.Web.Portal.Common\bin\Debug\Microsoft.Web.Portal.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <Private>True</Private>
