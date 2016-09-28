@@ -11,6 +11,10 @@ namespace DynamicDocs.Models
 
         public DocSets CurrentDocSets { get; set; }
 
+        public DocSetsItem CurrentDocSet { get; set; }
+
         public string InnerContent { get; set; }
+
+        public string DocPath { get; set; }
     }
 }

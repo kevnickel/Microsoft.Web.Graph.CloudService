@@ -20,71 +20,87 @@ using System.Xml.Serialization;
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-public partial class Toc {
-    
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+[System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+public partial class Toc
+{
+
     private TocItem[] tocItemField;
-    
+
     private string supportedProductField;
-    
+
     private string supportedVersionField;
-    
+
     private string rootPathField;
-    
+
     private string urlPrefixField;
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute("TocItem")]
-    public TocItem[] TocItem {
-        get {
+    public TocItem[] TocItem
+    {
+        get
+        {
             return this.tocItemField;
         }
-        set {
+        set
+        {
             this.tocItemField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string SupportedProduct {
-        get {
+    public string SupportedProduct
+    {
+        get
+        {
             return this.supportedProductField;
         }
-        set {
+        set
+        {
             this.supportedProductField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string SupportedVersion {
-        get {
+    public string SupportedVersion
+    {
+        get
+        {
             return this.supportedVersionField;
         }
-        set {
+        set
+        {
             this.supportedVersionField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string RootPath {
-        get {
+    public string RootPath
+    {
+        get
+        {
             return this.rootPathField;
         }
-        set {
+        set
+        {
             this.rootPathField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string UrlPrefix {
-        get {
+    public string UrlPrefix
+    {
+        get
+        {
             return this.urlPrefixField;
         }
-        set {
+        set
+        {
             this.urlPrefixField = value;
         }
     }
@@ -95,85 +111,121 @@ public partial class Toc {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-public partial class TocItem {
-    
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+[System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+public partial class TocItem
+{
+
     private TocItem[] tocItem1Field;
-    
+
     private string textField;
-    
+
     private string urlField;
-    
+
     private string sEODescriptionField;
-    
+
     private string scopeField;
-    
+
     private string versionField;
-    
+
+    private string childrenField;
+
+
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute("TocItem")]
-    public TocItem[] TocItem1 {
-        get {
+    public TocItem[] TocItem1
+    {
+        get
+        {
             return this.tocItem1Field;
         }
-        set {
+        set
+        {
             this.tocItem1Field = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string text {
-        get {
+    public string text
+    {
+        get
+        {
             return this.textField;
         }
-        set {
+        set
+        {
             this.textField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string url {
-        get {
+    public string url
+    {
+        get
+        {
             return this.urlField;
         }
-        set {
+        set
+        {
             this.urlField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string SEODescription {
-        get {
+    public string SEODescription
+    {
+        get
+        {
             return this.sEODescriptionField;
         }
-        set {
+        set
+        {
             this.sEODescriptionField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string Scope {
-        get {
+    public string Scope
+    {
+        get
+        {
             return this.scopeField;
         }
-        set {
+        set
+        {
             this.scopeField = value;
         }
     }
-    
+
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string Version {
-        get {
+    public string Version
+    {
+        get
+        {
             return this.versionField;
         }
-        set {
+        set
+        {
             this.versionField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string Children
+    {
+        get
+        {
+            return this.childrenField;
+        }
+        set
+        {
+            this.childrenField = value;
         }
     }
 }

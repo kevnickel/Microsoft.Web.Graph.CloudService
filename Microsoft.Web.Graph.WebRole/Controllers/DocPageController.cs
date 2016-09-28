@@ -3,59 +3,95 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DynamicDocs.Util;
+using Microsoft.Web.Graph.WebRole.Util;
 using DynamicDocs.Models;
 
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
-    public class DocPageController: Controller
+    public class DocPageController : Controller
     {
-        public ActionResult GetDocPage(string docPath)
+        public ActionResult GetDocPage(string culture, string docPath)
         {
             DocMeta model = new DocMeta();
-                            model.DocToc = TocManager.GetToc();
-                model.CurrentDocSets = TocManager.GetDocSets();
-            if (docPath.ToLower() == "/docs/overview")
-            {
-
-                model.InnerContent = TocManager.ReadOnlineFile("https://ashirstest.blob.core.windows.net/dynamicdoc/office-add-ins.htm");
-            }
-            else
-            {
-                model.InnerContent = "404 not found.";
-            }
-            HttpContext.Response.ContentType = "text/fdxml";
+            model.DocToc = DocContentManager.GetToc(culture, docPath);
+            model.CurrentDocSets = DocContentManager.GetDocSets(culture, docPath);
+            model.InnerContent = DocContentManager.GetDocContent(culture, docPath);
+            model.DocPath = DocContentManager.GetDocShortPath(docPath);
+            PreProcessDocModel(model);
             return View(model);
         }
 
-        public ActionResult NotFound()
+        public ContentResult ClearAllTocCache()
         {
-            string originalUrl = Request.RawUrl.ToLower();
-            if(originalUrl.StartsWith("/en-us/"))
+            DocContentManager.ClearTocCache();
+            return Content("All Toc Cache cleared");
+        }
+
+        public ContentResult ClearTocCache(string culture, string productCategory, string docSetCategory)
+        {
+            if (string.IsNullOrEmpty(culture) || string.IsNullOrEmpty(productCategory) || string.IsNullOrEmpty(docSetCategory))
             {
-                return View();
+                return Content("Input paramters are incorrect, please follow below example:<br/>docpage/clearTocCache?cluture=en-us&productCategory=add-ins&docSetCategory=reference");
             }
             else
             {
-                Response.Redirect("/en-us/" + GetUrlWithOutCulture(originalUrl));
+                DocContentManager.ClearTocCache(culture, productCategory, docSetCategory);
+                return Content("Specifed Toc Cache cleared");
             }
-            return null;
         }
 
-        private string GetUrlWithOutCulture(string url)
+        public ContentResult ClearAllDocSetsCache()
         {
-            List<string> cultures = new List<string>();
-            cultures.Add("/ja-jp/");
-            cultures.Add("/zh-cn/");
-            cultures.Add("/de-de/");
-            foreach (string culture in cultures)
+            DocContentManager.ClearDocSetsCache();
+            return Content("All docsets Cache cleared");
+        }
+
+        public ContentResult ClearDocSetsCache(string culture, string productCategory)
+        {
+            DocContentManager.ClearDocSetsCache(culture, productCategory);
+            return Content("Sepcified docsets Cache cleared");
+        }
+
+
+
+        private void PreProcessDocModel(DocMeta model)
+        {
+            LinkCurrentDocSet(model);
+            ContentNotFoundHandler(model);
+            ProcessImages(model);
+        }
+
+        private void LinkCurrentDocSet(DocMeta model)
+        {
+            if (model.DocToc != null)
             {
-                if (url.StartsWith(culture))
+                string docSetEntryFolderName = model.DocToc.RootPath;
+                if (model.CurrentDocSets != null && model.CurrentDocSets.Item != null)
                 {
-                    return url.Substring(6);
+                    foreach (DocSetsItem item in model.CurrentDocSets.Item)
+                    {
+                        if (item.EntryFolder.Equals(docSetEntryFolderName, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            model.CurrentDocSet = item;
+                            return;
+                        }
+                    }
                 }
             }
-            return url;
+        }
+
+        private void ContentNotFoundHandler(DocMeta model)
+        {
+            if (model.InnerContent == null)
+            {
+                model.InnerContent = "<h1>Document not found.</h1>";
+            }
+        }
+        private void ProcessImages(DocMeta model)
+        {
+            model.InnerContent = model.InnerContent.Replace("../../../images", "https://devofficecdn.azureedge.net/officedocuments/images")
+            .Replace("../../images", "https://devofficecdn.azureedge.net/officedocuments/images")
+            .Replace("../images", "https://devofficecdn.azureedge.net/officedocuments/images");
         }
     }
 }

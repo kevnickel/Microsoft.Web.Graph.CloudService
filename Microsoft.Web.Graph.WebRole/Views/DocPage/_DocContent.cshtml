@@ -1,6 +1,6 @@
 ﻿@model DynamicDocs.Models.DocMeta
 <div id="OfficeDocDiv" style="float: left; max-width: 1100px;">
-    @if (@Model.CurrentDocSets.Item.Length >= 2)
+    @if (@Model.CurrentDocSets!=null && @Model.CurrentDocSets.Item.Length >= 2)
     {
         <div id="tocTabs">
             <span>
@@ -11,7 +11,5 @@
             </span>
         </div>
     }
-    @Html.Raw(@Model.InnerContent.Replace("../../../images", "https://devofficecdn.azureedge.net/officedocuments/images")
-            .Replace("../../images", "https://devofficecdn.azureedge.net/officedocuments/images")
-            .Replace("../images", "https://devofficecdn.azureedge.net/officedocuments/images"))
+    @Html.Raw(@Model.InnerContent)
 </div>
