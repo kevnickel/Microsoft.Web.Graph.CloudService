@@ -8,7 +8,7 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
 {
     public class BaseController : Controller
     {
-        protected void SetAppropriateContentType()
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             HttpContext.Response.ContentType = "text/fdxml";
         }
