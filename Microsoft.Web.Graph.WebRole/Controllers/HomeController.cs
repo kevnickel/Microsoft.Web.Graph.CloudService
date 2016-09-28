@@ -10,7 +10,6 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
     {
         public ActionResult Index()
         {
-            base.SetAppropriateContentType();
             return View();
         }
 

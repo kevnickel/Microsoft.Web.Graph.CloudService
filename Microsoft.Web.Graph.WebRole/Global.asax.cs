@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.Web.Portal.Common;
 
 namespace Microsoft.Web.Graph.WebRole
 {
@@ -16,6 +17,11 @@ namespace Microsoft.Web.Graph.WebRole
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            CultureService.SetCurrentCulture(base.Context.Request);
         }
     }
 }

@@ -24,6 +24,7 @@
 @{
     ViewBag.Title = "GraphExplorer";
 }
+
 <script>
     if (window.location.protocol != "https:")
         window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
@@ -48,7 +49,7 @@
                         <a class="nav-link" href="#" ng-show="userInfo.isAuthenticated" ng-click="logout()">Sign out</a>
                     </li>
                 </ul>
-                <p ng-hide="userInfo.isAuthenticated">"To try the explorer, please "<a class="nav-link" href="#" ng-click="login()">"sign in"</a>" with your work or school account from Microsoft."</p>
+                <p ng-hide="userInfo.isAuthenticated">@Microsoft.Web.Graph.WebRole.Resources.GraphExplorer.Index.TRY_IN_EXPLORER<a class="nav-link" href="#" ng-click="login()">@Microsoft.Web.Graph.WebRole.Resources.GraphExplorer.Index.SIGN_IN</a>@Microsoft.Web.Graph.WebRole.Resources.GraphExplorer.Index.WORK_WITH_SCHOOL_OFFICE</p>
             </div>
 
             <div ng-controller="datalistCtrl">
@@ -88,7 +89,7 @@
                         <input title="Graph API Request Url" aria-label="Graph API Request Url" type="text" ng-model="text" name="text" class="form-control" placeholder="query" list="requestList" id="queryBar" style="height: 38px" autocomplete="off" />
                     </form>
                     <div class="input-group-btn">
-                        <button id="submit-button" type="button" class="btn btn-default" ng-click="submit()">"Submit"</button>
+                        <button id="submit-button" type="button" class="btn btn-default" ng-click="submit()">@Microsoft.Web.Graph.WebRole.Resources.GraphExplorer.Index.SUBMIT</button>
                     </div>
                     <div class="input-group-btn" id="duration" ng-show="showDuration">
                         <div class="btn-group" uib-dropdown on-toggle="toggled(open)">
