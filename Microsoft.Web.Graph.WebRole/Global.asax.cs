@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.Web.Portal.Common;
+using Microsoft.Web.Portal.Common.Services;
 
 namespace Microsoft.Web.Graph.WebRole
 {
@@ -21,7 +22,10 @@ namespace Microsoft.Web.Graph.WebRole
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            CultureService.SetCurrentCulture(base.Context.Request);
+            //todo: we need to implement container mechanism to create teh service instance at the
+            // start of the application and access that instance throughout the MVC Application
+            ICultureService cultureService = new CultureService();
+            cultureService.SetCurrentCulture(base.Context.Request);
         }
     }
 }
