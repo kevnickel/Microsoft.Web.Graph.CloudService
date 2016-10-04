@@ -10,7 +10,14 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            HttpContext.Response.ContentType = "text/fdxml";
+            if (filterContext.HttpContext.Request.IsLocal == true)
+            {
+                HttpContext.Response.ContentType = "text/html";
+            }
+            else
+            {
+                HttpContext.Response.ContentType = "text/fdxml";
+            }
         }
     }
 }
