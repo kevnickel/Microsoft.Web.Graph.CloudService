@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.Web.Portal.Common;
+using Microsoft.Web.Portal.Common.Services;
+using Microsoft.Practices.Unity;
 
 namespace Microsoft.Web.Graph.WebRole
 {
@@ -21,7 +23,8 @@ namespace Microsoft.Web.Graph.WebRole
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            CultureService.SetCurrentCulture(base.Context.Request);
+            ICultureService cultureService = App_Start.UnityConfig.GetConfiguredContainer().Resolve<ICultureService>();
+            cultureService.SetCurrentCulture(base.Context.Request);
         }
     }
 }

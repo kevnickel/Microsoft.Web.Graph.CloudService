@@ -8,15 +8,25 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Microsoft.Web.Portal.Common
+namespace Microsoft.Web.Portal.Common.Services
 {
-    public class CultureService
+    public class CultureService : ICultureService
     {
-        private readonly static string supportCultures = @"[/-]ja-jp/?|[/-]de-de/?|[/-]zh-cn/?|[/-]en-us/?";
+        /// <summary>
+        /// Supported culture by current service
+        /// </summary>
+        private readonly static string _supportCultures = @"[/-]ja-jp/?|[/-]de-de/?|[/-]zh-cn/?|[/-]en-us/?";
 
-        public static string CurrentCulture
+        /// <summary>
+        /// Default culture in case unsupported culture is requested
+        /// </summary>
+        private readonly static string _defaultCulture = "en-us";
+
+        /// <summary>
+        /// Current culture
+        /// </summary>
+        public string CurrentCulture
         {
-
             get
             {
                 return Thread.CurrentThread.CurrentUICulture.Name;
@@ -27,12 +37,20 @@ namespace Microsoft.Web.Portal.Common
             }
         }
 
-        public static void SetCurrentCulture(HttpRequest request)
+        /// <summary>
+        /// Sets the current culture based on current Http Request
+        /// </summary>
+        /// <param name="httpRequest">current http request</param>
+        public void SetCurrentCulture(HttpRequest httpRequest)
         {
-            Match mt = Regex.Match(request.Url.AbsolutePath, supportCultures, RegexOptions.IgnoreCase);
-            if (mt.Length <= 0)
-                return;
-            CurrentCulture = mt.Value.Trim(new char[] { '/', '-' }).ToLowerInvariant();
+            string culture = _defaultCulture;
+            Match mt = Regex.Match(httpRequest.Url.AbsolutePath, _supportCultures, RegexOptions.IgnoreCase);
+            if (mt.Length > 0)
+            {
+                culture = mt.Value.Trim(new char[] { '/', '-' }).ToLowerInvariant();
+            }
+            CurrentCulture = culture;
         }
+
     }
 }
