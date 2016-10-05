@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Microsoft.Web.Portal.Common.Services
+namespace Microsoft.Web.Portal.Common.Culture
 {
     public class CultureService : ICultureService
     {

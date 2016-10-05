@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Microsoft.Web.Portal.Common.Services
+namespace Microsoft.Web.Portal.Common.Culture
 {
     /// <summary>
     /// Interface for Culture Service
