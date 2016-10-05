@@ -1,7 +1,8 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using Microsoft.Web.Portal.Common.Services;
+using Microsoft.Web.Portal.Common.Culture;
+using Microsoft.Web.Portal.Common.Logging;
 
 namespace Microsoft.Web.Graph.WebRole.App_Start
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Web.Graph.WebRole.App_Start
 
             // Register your types here
             container.RegisterType<ICultureService, CultureService>();
+            container.RegisterType<ILogger, Log4NetLogger>();
         }
     }
 }

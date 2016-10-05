@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Web.Portal.Common.Culture;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,6 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
 {
     public class GraphExplorerController : BaseController
     {
-        // GET: /GraphExplorer/
-
         public ActionResult Index()
         {
             return View();
