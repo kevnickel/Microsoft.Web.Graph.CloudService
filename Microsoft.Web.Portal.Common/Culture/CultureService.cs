@@ -15,12 +15,12 @@ namespace Microsoft.Web.Portal.Common.Culture
         /// <summary>
         /// Supported culture by current service
         /// </summary>
-        private readonly string _supportCultures = @"[/-]ja-jp/?|[/-]de-de/?|[/-]zh-cn/?|[/-]en-us/?";
+        private readonly string _supportCultures = null;
 
         /// <summary>
         /// Default culture in case unsupported culture is requested
         /// </summary>
-        private readonly string _defaultCulture = "en-us";
+        private readonly string _defaultCulture = null;
 
         /// <summary>
         /// Current culture
