@@ -7,6 +7,7 @@ using Microsoft.Web.Graph.WebRole.Util;
 using DynamicDocs.Models;
 using Microsoft.Web.Portal.Common.Culture;
 using Microsoft.Web.Portal.Common.Logging;
+using Microsoft.Web.Portal.Common.Telemetry;
 
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
@@ -14,15 +15,17 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
     {
         private ICultureService _cultureService = null;
         private ILogger _logger = null;
-
-        public DocPageController(ICultureService cultureService, ILogger logger)
+        private ITelemetry _telemetry = null;
+        public DocPageController(ICultureService cultureService, ILogger logger, ITelemetry telemetry)
         {
             _cultureService = cultureService;
             _logger = logger;
+            _telemetry = telemetry;
         }
         public ActionResult GetDocPage(string culture, string docPath)
         {
             _logger.Log(LogLevel.Debug, "GetDocPage");
+            _telemetry.TrackEvent("GetDocPage");
             DocMeta model = new DocMeta();
             model.DocToc = DocContentManager.GetToc(_cultureService.CurrentCulture, docPath);
             model.CurrentDocSets = DocContentManager.GetDocSets(_cultureService.CurrentCulture, docPath);
