@@ -36,6 +36,8 @@ namespace Microsoft.Web.Portal.Common
             return result;
         }
 
+        #region Application Name
+
         /// <summary>
         /// ApplicationName
         /// </summary>
@@ -48,13 +50,47 @@ namespace Microsoft.Web.Portal.Common
         {
             get
             {
-                if(_applicationName == null)
+                if (_applicationName == null)
                 {
                     _applicationName = GetValue("Microsoft.Web.Portal.Common.Environment.ApplicationName", "Warning.Applicaiton.Name.Missing");
                 }
                 return _applicationName;
             }
         }
+        #endregion
+
+        #region Default Culture
+        private string _defaultCulture;
+
+        public string DefaultCulture
+        {
+            get
+            {
+                if (_defaultCulture == null)
+                {
+                    _defaultCulture = GetValue("Microsoft.Web.Portal.DefaultCulture", "en-us");
+                }
+                return _defaultCulture;
+            }
+        }
+        #endregion
+
+        #region Supported Culture
+        private string _supportedCultures;
+
+        public string SupportedCultures
+        {
+            get
+            {
+                if (_supportedCultures == null)
+                {
+                    _supportedCultures = GetValue("Microsoft.Web.Portal.SupportedCulture", "[/-]en-us/?");
+                }
+                return _supportedCultures;
+            }
+        }
+        #endregion
+
 
     }
 }
