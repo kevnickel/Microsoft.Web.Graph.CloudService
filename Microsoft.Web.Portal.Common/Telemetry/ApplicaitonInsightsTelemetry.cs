@@ -78,7 +78,6 @@ namespace Microsoft.Web.Portal.Common.Telemetry
         public void TrackException(Exception exception, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null)
         {
             _telemetryClient.TrackException(exception, properties, metrics);
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -89,7 +88,6 @@ namespace Microsoft.Web.Portal.Common.Telemetry
         {
             Contract.Requires(!string.IsNullOrEmpty(pageName));
             _telemetryClient.TrackPageView(pageName);
-            throw new NotImplementedException();
         }
     }
 }
