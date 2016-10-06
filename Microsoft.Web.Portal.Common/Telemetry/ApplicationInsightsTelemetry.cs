@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Microsoft.ApplicationInsights;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics.Contracts;
-using Microsoft.ApplicationInsights;
+
 namespace Microsoft.Web.Portal.Common.Telemetry
 {
-    public class ApplicaitonInsightsTelemetry : ITelemetry
+    public class ApplicationInsightsTelemetry : ITelemetry
     {
         /// <summary>
         /// Azure Application insight telemetry client
@@ -17,7 +15,7 @@ namespace Microsoft.Web.Portal.Common.Telemetry
         /// <summary>
         /// constructor to initialize the telemetry
         /// </summary>
-        public ApplicaitonInsightsTelemetry()
+        public ApplicationInsightsTelemetry()
         {
             _telemetryClient =new TelemetryClient();
         }

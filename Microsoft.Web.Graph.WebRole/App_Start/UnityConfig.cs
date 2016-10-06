@@ -41,7 +41,7 @@ namespace Microsoft.Web.Graph.WebRole.App_Start
             // Register your types here
             container.RegisterType<ICultureService, CultureService>();
             container.RegisterType<ILogger, Log4NetLogger>();
-            container.RegisterType<ITelemetry, ApplicaitonInsightsTelemetry>();
+            container.RegisterType<ITelemetry, ApplicationInsightsTelemetry>();
         }
     }
 }
