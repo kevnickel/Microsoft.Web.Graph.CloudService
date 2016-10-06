@@ -25,12 +25,13 @@ namespace Microsoft.Web.Portal.Common.Logging
         private ILog _log = null;
 
         /// <summary>
-        /// cosntructor, initializes the Log4Net
+        /// Constructor, initializes the Log4Net
         /// </summary>
-        public Log4NetLogger()
+        /// <param name="name">name of the logger component</param>
+        public Log4NetLogger(string name)
         {
             log4net.Config.XmlConfigurator.Configure();
-            _log = LogManager.GetLogger("graph.microsoft.io"); // todo: we need to get this inforamtion from the log file, so that it can be shared
+            _log = LogManager.GetLogger(name);
         }
 
         /// <summary>
