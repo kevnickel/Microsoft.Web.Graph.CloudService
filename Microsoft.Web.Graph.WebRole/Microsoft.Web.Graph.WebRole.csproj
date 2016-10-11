@@ -227,6 +227,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="package.json" />
     <Content Include="Content\src\app.scss" />
+    <None Include="Properties\PublishProfiles\kenick-graph-test - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\graph-explorer-scripts\ace.js" />
