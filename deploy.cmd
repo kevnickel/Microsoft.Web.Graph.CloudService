@@ -138,11 +138,12 @@ IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
   )
 
 echo 5. Build to the temporary path
-IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\Microsoft.Web.Graph.WebRole\\Microsoft.Web.Graph.WebRole.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
-) ELSE (
-  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\Microsoft.Web.Graph.WebRole\\Microsoft.Web.Graph.WebRole.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
-)
+::IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+::  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\Microsoft.Web.Graph.WebRole\\Microsoft.Web.Graph.WebRole.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
+::) ELSE (
+::  call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\Microsoft.Web.Graph.WebRole\\Microsoft.Web.Graph.WebRole.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
+::) 
+call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\Microsoft.Web.Graph.CloudService.sln /t:Precompiled /v:m"
 
 IF !ERRORLEVEL! NEQ 0 goto error
 
