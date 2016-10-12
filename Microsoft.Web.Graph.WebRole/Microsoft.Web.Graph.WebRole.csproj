@@ -236,8 +236,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="package.json" />
     <Content Include="Content\src\app.scss" />
-    <None Include="Properties\PublishProfiles\kenick-graph-test - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\test.pubxml" />
     <EmbeddedResource Include="Resources\GraphExplorer\Index.zh-cn.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.zh-cn.Designer.cs</LastGenOutput>
