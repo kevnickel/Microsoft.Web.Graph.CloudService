@@ -15,12 +15,12 @@ namespace Microsoft.Web.Portal.Common.Culture
         /// <summary>
         /// Supported culture by current service
         /// </summary>
-        private readonly static string _supportCultures = @"[/-]ja-jp/?|[/-]de-de/?|[/-]zh-cn/?|[/-]en-us/?";
+        private readonly string _supportCultures = null;
 
         /// <summary>
         /// Default culture in case unsupported culture is requested
         /// </summary>
-        private readonly static string _defaultCulture = "en-us";
+        private readonly string _defaultCulture = null;
 
         /// <summary>
         /// Current culture
@@ -35,6 +35,17 @@ namespace Microsoft.Web.Portal.Common.Culture
             {
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(value);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="defaultCulture"></param>
+        /// <param name="supportedCulture"></param>
+        public CultureService(string defaultCulture, string supportedCulture)
+        {
+            _defaultCulture = defaultCulture;
+            _supportCultures = supportedCulture;
         }
 
         /// <summary>
