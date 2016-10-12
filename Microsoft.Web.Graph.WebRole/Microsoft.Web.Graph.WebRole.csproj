@@ -218,6 +218,7 @@
     <Compile Include="Util\BlobManager.cs" />
     <Compile Include="Util\DocContentManager.cs" />
     <Compile Include="Util\XmlReader.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,30 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@model Microsoft.Web.Graph.WebRole.ViewModels.ViewModelBase
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="PRAGMA" content="NO-CACHE">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <title>Microsoft.Web.Graph.IO Prototype</title>
-@{
-    string hostName = HttpContext.Current.Request["HTTP_HOST"];
-    if (hostName.IndexOf("localhost") != -1 || hostName.IndexOf("azurewebsites") != -1)
-    {
-        <script src="https://cdn.optimizely.com/js/5657941311.js"></script>
-    }
-    else
-    {
-        <script src="https://cdn.optimizely.com/js/5703400067.js"></script>
-    }
-}
-
+    <meta http-equiv="PRAGMA" content="@Model.Pragma">
+    <meta http-equiv="Cache-control" content="@Model.CacheControl">
+    <title>@Model.PageTitle</title>
+    <script src="@Model.OptimizelyUrl"></script>
+   
     @*Application Insight start*@
     <script>
-        //appInsights telemetry
-        var appInsightInstrumentationKey = "0c5857de-44ee-44df-ab2d-3848812279b8"; //prod Key
-        if (window.location.host.toLowerCase().indexOf('localhost') != -1 || window.location.host.toLowerCase().indexOf('azurewebsites') != -1) {
-            appInsightInstrumentationKey = "971fd8f4-65c9-44c6-90a9-070a98f1722e"; //staging key
-        }
+        @*AppInsights telemetry*@
+        var appInsightInstrumentationKey = "@Model.AppInsightInstrumentationKey";
         var appInsights = window.appInsights || function (config) {
             function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
         }({
@@ -50,12 +40,8 @@
             }, i[r].l = 1 * new Date(); a = s.createElement(o),
             m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        if (window.location.host.indexOf('localhost') != -1 || window.location.host.indexOf('azurewebsites') != -1) {
-            ga('create', 'UA-66884364-1', 'auto'); //staging and Dev GA
-        } else {
-            ga('create', 'UA-69973107-1', 'auto'); //prod GA
-        }
+        var gaKey = "@Model.GoogleAnalyticsKey";
+        ga('create', gaKey, 'auto'); //staging and Dev GA
         ga('require', 'displayfeatures');
         ga('require', 'linkid', 'linkid.js');
         ga('send', 'pageview');
