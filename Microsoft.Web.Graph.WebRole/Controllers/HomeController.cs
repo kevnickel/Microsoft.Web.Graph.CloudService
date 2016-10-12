@@ -12,7 +12,7 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
         public ActionResult Index()
         {
             ViewModelBase model = new ViewModelBase(HttpContext.ApplicationInstance.Context);
-            model.PageTitle = "Microsoft.Web.Graph.IO Prototype";
+            model.PageTitle = "Microsoft Graph - Home";
             return View(model);
         }
 
