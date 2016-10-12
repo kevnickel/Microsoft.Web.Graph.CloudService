@@ -22,7 +22,7 @@ namespace Microsoft.Web.Graph.WebRole.ViewModels
         {
             get
             {
-                return (_context.Request.Url.Host.Contains("localhost") || _context.Request.RawUrl.Contains("azurewebsites"));
+                return (_context.Request.Url.Host.Contains("localhost") || _context.Request.RawUrl.Contains("devx.microsoft-tst.com"));
             }
         }
 
