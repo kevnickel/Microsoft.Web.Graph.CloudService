@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Web.Graph.WebRole.ViewModels;
 
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
@@ -10,7 +11,9 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            ViewModelBase model = new ViewModelBase(HttpContext.ApplicationInstance.Context);
+            model.PageTitle = "Microsoft Graph - Home";
+            return View(model);
         }
 
         public ActionResult About()
