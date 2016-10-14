@@ -130,8 +130,8 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 )
 
 echo 4. Run gulp tasks
-IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
-  pushd "%DEPLOYMENT_TARGET%"
+IF EXIST "%DEPLOYMENT_SOURCE%\gulpfile.js" (
+  pushd "%DEPLOYMENT_SOURCE%"
   call :ExecuteCmd !GULP_CMD! deploy
   popd
   IF !ERRORLEVEL! NEQ 0 goto error
