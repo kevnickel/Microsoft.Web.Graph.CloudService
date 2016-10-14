@@ -129,14 +129,6 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   popd
 )
 
-echo 4. Run gulp tasks
-IF EXIST "%DEPLOYMENT_SOURCE%\gulpfile.js" (
-  pushd "%DEPLOYMENT_SOURCE%"
-  call :ExecuteCmd !GULP_CMD! deploy
-  popd
-  IF !ERRORLEVEL! NEQ 0 goto error
-  )
-
 echo 5. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\Microsoft.Web.Graph.WebRole\\Microsoft.Web.Graph.WebRole.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
@@ -151,6 +143,15 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
+
+echo 4. Run gulp tasks
+echo "%DEPLOYMENT_TARGET%"
+IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
+  pushd "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd !GULP_CMD! deploy
+  popd
+  IF !ERRORLEVEL! NEQ 0 goto error
+  )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end

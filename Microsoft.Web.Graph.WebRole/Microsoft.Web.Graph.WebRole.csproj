@@ -222,7 +222,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\build\main.css" />
     <Content Include="Content\graph-explorer-styles\api-explorer.css" />
     <Content Include="Content\graph-explorer-styles\bootstrap.css" />
     <Content Include="Content\graph-explorer-styles\ngProgress.css" />
@@ -303,6 +302,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\build\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
