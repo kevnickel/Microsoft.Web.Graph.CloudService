@@ -10,7 +10,7 @@ var cssDestFolder = 'Content/build';
 var gulp = require('gulp');
 
 var plugins = require("gulp-load-plugins")({
-    pattern: ['gulp-*', 'gulp.*'],
+    pattern: ['gulp-*', 'gulp.*', 'run-sequence'],
     replaceString: /\bgulp[\-.]/
 });
 
@@ -18,7 +18,11 @@ gulp.task('default', function () {
     // place code for your default task here
 });
 
-gulp.task('deploy', ['sass','css']);
+gulp.task('deploy', function(callback) {
+    plugins.runSequence('sass',
+        ['css'],
+        callback);
+});
 
 gulp.task('sass', function () {
     gulp.src(sassSourceFiles)
