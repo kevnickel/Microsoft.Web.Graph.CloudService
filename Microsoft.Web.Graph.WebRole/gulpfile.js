@@ -38,7 +38,7 @@ gulp.task('deploy', ['sass'], function() {
 
 // Create a bundled and minified css from sass files
 gulp.task('sass', function () {
-    var cssOutputFile = 'main.css';
+    var cssOutputFile = 'msgraph-portal.css';
     gulp.src(sources.sass)
         .pipe(plugins.sass())
         .pipe(plugins.concat(cssOutputFile))
@@ -46,3 +46,6 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(paths.css));
 });
 
+gulp.task('watch', function() {
+    gulp.watch(sources.sass, ['sass']);
+});

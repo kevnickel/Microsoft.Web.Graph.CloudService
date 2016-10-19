@@ -1,0 +1,20 @@
+﻿// Styles specific to Code Samples & SDKs page
+
+.dxportal-cssdk-listitem-color {
+	@extend .ms-bgColor-white;
+}
+
+.dxportal-cssdk-footnote {
+    @extend .ms-font-mi;
+    @extend .ms-fontColor-black;
+}
+
+.dxportal-cssdk-links {
+	@extend .ms-Grid-col;
+	@extend .ms-u-sm6;
+    @extend .ms-font-m-plus;
+}
+
+.dxportal-cssdk-background {
+    @extend .ms-bgColor-neutralLight;
+}

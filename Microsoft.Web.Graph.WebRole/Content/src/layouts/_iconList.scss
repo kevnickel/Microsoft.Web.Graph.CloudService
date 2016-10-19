@@ -1,0 +1,23 @@
+﻿// 3x3 grid with images
+
+.dxportal-iconList-col {
+	@extend .ms-Grid-col;
+	@extend .ms-u-sm12;
+	@extend .ms-u-md6;
+	@extend .ms-u-lg4;
+    padding: 15px;
+}
+
+.dxportal-iconList-cell {
+    padding: 30px;
+}
+
+.dxportal-iconList-image-col {
+	@extend .ms-Grid-col;
+	@extend .ms-u-sm12;
+}
+
+.dxportal-iconList-title {
+	@extend .ms-font-xl;
+	@extend .ms-u-textAlignCenter;
+}

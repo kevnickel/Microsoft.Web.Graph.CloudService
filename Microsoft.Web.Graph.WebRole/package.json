@@ -21,6 +21,7 @@
     "yargs": "^6.0.0"
   },
   "dependencies": {
+    "office-ui-fabric-js": "^1.1.0",
     "office-ui-fabric-react": "^0.55.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
