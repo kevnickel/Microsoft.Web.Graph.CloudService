@@ -158,6 +158,8 @@ $RECYCLE.BIN/
 # Project specifics
 # =========================
 Microsoft.Web.Graph.CloudService/.vs/config/*
+/Microsoft.Web.Graph.WebRole/node_modules
+/Microsoft.Web.Graph.WebRole/bower_components
 App_Data/
 glob:*.user
 *.patch
@@ -176,7 +178,7 @@ src/UpgradeLog.*
 *.itrace.csdef
 *.build.csdef
 
-
 #enable all /lib artifacts
 !lib/*/*.*
 */.vs/*
+

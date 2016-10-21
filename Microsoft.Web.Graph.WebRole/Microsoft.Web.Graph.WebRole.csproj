@@ -90,11 +90,9 @@
       <HintPath>..\packages\Microsoft.Web.Administration.7.0.0.0\lib\net20\Microsoft.Web.Administration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Portal.Common">
-      <HintPath>..\Microsoft.Web.Portal.Common\bin\Debug\Microsoft.Web.Portal.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <Private>True</Private>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Microsoft.WindowsAzure.Diagnostics.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <Private>False</Private>
@@ -233,8 +231,11 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="gulpfile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="package.json" />
+    <Content Include="Content\src\app.scss" />
     <EmbeddedResource Include="Resources\GraphExplorer\Index.zh-cn.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.zh-cn.Designer.cs</LastGenOutput>
@@ -323,6 +324,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Web.Portal.Common\Microsoft.Web.Portal.Common.csproj">
+      <Project>{ac114012-37cb-427f-b981-93f8baba2306}</Project>
+      <Name>Microsoft.Web.Portal.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
