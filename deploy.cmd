@@ -113,7 +113,7 @@ goto :EOF
 echo Handling .NET Web Application deployment.
 
 echo 1. Restore NuGet packages
-IF /I "AzureTest1.sln" NEQ "" (
+IF /I Microsoft.Web.Graph.CloudService.sln" NEQ "" (
   call :ExecuteCmd nuget restore "%DEPLOYMENT_SOURCE%\Microsoft.Web.Graph.CloudService.sln"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
