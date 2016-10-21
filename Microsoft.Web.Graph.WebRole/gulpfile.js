@@ -25,6 +25,10 @@ var sources = {
     sass: 'Content/src/**/*.scss'
 };
 
+var onError = function(err) {
+    plugins.util.log(plugins.util.colors.red.bold('[ERROR]:'), plugins.util.colors.bgRed(err.message));
+}
+
 gulp.task('default', function () {
     // place code for your default task here
 });
@@ -41,6 +45,7 @@ gulp.task('sass', function () {
     var cssOutputFile = 'msgraph-portal.css';
     gulp.src(sources.sass)
         .pipe(plugins.sass())
+        .on('error', onError)
         .pipe(plugins.concat(cssOutputFile))
         .pipe(plugins.cleanCss({ compatibility: 'ie8' }))
         .pipe(gulp.dest(paths.css));
