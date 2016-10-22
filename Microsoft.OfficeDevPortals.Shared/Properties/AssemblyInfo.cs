@@ -1,25 +1,24 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="AssemblyInfo.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
-//     Developed by keithmg Office Developer Experience Engineering Team 
+//     Developed by patrickp Office Developer Experience Engineering Team 
 // </copyright>
 // <summary>
-//      Assembly Info
+//      Assembly info for Microsoft.OfficeDevPortals.Shared
 // </summary>
 //------------------------------------------------------------------------------
 using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.Web.Porrtal.Common")]
+[assembly: AssemblyTitle("Microsoft.OfficeDevPortals.Shared")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Microsoft.Web.Porrtal.Common")]
+[assembly: AssemblyProduct("Microsoft.OfficeDevPortals.Shared")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,7 +30,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c8996b81-8294-4b0e-ade5-12d6149cd034")]
+[assembly: Guid("df6b7ecb-ab09-4c31-a363-ff72af50944a")]
 
 // Version information for an assembly consists of the following four values:
 //

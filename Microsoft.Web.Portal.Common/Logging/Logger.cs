@@ -1,66 +1,53 @@
-﻿using log4net;
-using System.Diagnostics.Contracts;
+﻿//------------------------------------------------------------------------------
+// <copyright file="Logger.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Developed by patrickp Office Developer Experience Engineering Team 
+// </copyright>
+// <summary>
+//      Logger.cs file. TODO STUB IN REAL LOGGING CODE
+// </summary>
+//------------------------------------------------------------------------------
 
 namespace Microsoft.Web.Portal.Common.Logging
 {
-    /// <summary>
-    /// Log level enumeration
-    /// </summary>
-    public enum LogLevel {
-        Debug,
-        Information,
-        Warning,
-        Error,
-        Fatal
-    };
+    using System.Diagnostics.Contracts;
+    using OfficeDevPortals.Shared.Logging;
+    using static OfficeDevPortals.Shared.Enums.SharedEnums;
 
     /// <summary>
     /// Logger implementation using log4net
     /// </summary>
-    public class Log4NetLogger : ILogger
+    public class Logger : ILogger
     {
         /// <summary>
-        /// the Log instance
+        /// Initializes a new instance of the <see cref="Logger" /> class.
+        /// Constructor, Stubbed with no implementation. 
         /// </summary>
-        private ILog _log = null;
-
-        /// <summary>
-        /// Constructor, initializes the Log4Net
-        /// </summary>
-        /// <param name="name">name of the logger component</param>
-        public Log4NetLogger(string name)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "name", Justification = "This method will be implemented in the future")]
+        public Logger()
         {
-            log4net.Config.XmlConfigurator.Configure();
-            _log = LogManager.GetLogger(name);
         }
 
         /// <summary>
-        /// Logs the message
+        /// Initializes a new instance of the <see cref="Logger" /> class.
+        /// Constructor, Stubbed with no implementation. 
         /// </summary>
-        /// <param name="level">log level</param>
+        /// <param name="name">name of the logger component</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "name", Justification = "This method will be implemented in the future")]
+        public Logger(string name)
+        {
+        }
+
+        /// <summary>
+        /// Log method for loosely coupling loggers
+        /// </summary>
+        /// <param name="logLevel">log level</param>
         /// <param name="message">message to log</param>
-        public void Log(LogLevel level, string message)
+        public void Log(LogLevel logLevel, string message)
         {
             Contract.Requires(!string.IsNullOrEmpty(message));
 
-            switch (level)
-            {
-                case LogLevel.Debug:
-                    _log.Debug(message);
-                    break;
-                case LogLevel.Error:
-                    _log.Error(message);
-                    break;
-                case LogLevel.Fatal:
-                    _log.Fatal(message);
-                    break;
-                case LogLevel.Information:
-                    _log.Info(message);
-                    break;
-                case LogLevel.Warning:
-                    _log.Warn(message);
-                    break;
-            }
+            ////TODO LOGGING CODE
         }
     }
 }
