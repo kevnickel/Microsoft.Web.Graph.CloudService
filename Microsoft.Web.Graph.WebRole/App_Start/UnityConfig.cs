@@ -44,7 +44,7 @@ namespace Microsoft.Web.Graph.WebRole.App_Start
             // Register your types here
             Portal.Common.Environment env = new Portal.Common.Environment();
             container.RegisterType<ICultureService, CultureService>(new InjectionConstructor(new string [] { env.DefaultCulture, env.SupportedCultures}));
-            container.RegisterType<ILogger, Log4NetLogger>(new InjectionConstructor(env.ApplicationName));
+            container.RegisterType<ILogger, Logger>(new InjectionConstructor(env.ApplicationName));
             container.RegisterType<ITelemetry, ApplicationInsightsTelemetry>();
         }
     }
