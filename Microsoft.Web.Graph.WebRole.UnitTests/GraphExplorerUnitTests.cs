@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Web.Graph.WebRole.Controllers;
 using System.Web.Mvc;
 
 namespace Microsoft.Web.Graph.WebRole.UnitTests

@@ -4,6 +4,7 @@
     using System.Web.Mvc;
     using Microsoft.Web.Graph.WebRole.Util;
     using DynamicDocs.Models;
+    using Microsoft.OfficeDevPortals.Shared.Enums;
     using Microsoft.OfficeDevPortals.Shared.Telemetry;
     using Microsoft.OfficeDevPortals.Shared.Logging;
     using Microsoft.OfficeDevPortals.Shared.Culture;
@@ -21,7 +22,7 @@
         }
         public ActionResult GetDocPage(string culture, string docPath)
         {
-            _logger.Log(LogLevel.Debug, "GetDocPage");
+            _logger.Log(SharedEnums.LogLevel.Debug, "GetDocPage");
             _telemetry.TrackEvent("GetDocPage");
             DocMeta model = new DocMeta();
             model.DocToc = DocContentManager.GetToc(_cultureService.CurrentCulture, docPath);
