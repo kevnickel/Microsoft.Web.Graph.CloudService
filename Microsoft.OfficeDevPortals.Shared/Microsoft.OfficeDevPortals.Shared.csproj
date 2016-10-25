@@ -54,6 +54,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\ICultureService.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Interfaces\IStaticPageStorage.cs" />
     <Compile Include="Interfaces\ITelemetry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

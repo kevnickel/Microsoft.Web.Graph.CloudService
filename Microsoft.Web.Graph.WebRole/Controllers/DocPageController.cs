@@ -1,4 +1,14 @@
-﻿namespace Microsoft.Web.Graph.WebRole.Controllers
+﻿//------------------------------------------------------------------------------
+// <copyright file="DocPageController.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Developed by jnlxu Office Developer Experience Engineering Team 
+// </copyright>
+// <summary>
+//      Controller for serving Graph Portal documents
+// </summary>
+//------------------------------------------------------------------------------
+
+namespace Microsoft.Web.Graph.WebRole.Controllers
 {
     using System;
     using System.Web.Mvc;
@@ -11,23 +21,18 @@
 
     public class DocPageController : BaseController
     {
-        private ICultureService _cultureService = null;
-        private ILogger _logger = null;
-        private ITelemetry _telemetry = null;
-        public DocPageController(ICultureService cultureService, ILogger logger, ITelemetry telemetry)
+        public DocPageController(ICultureService cultureService, ILogger logger, ITelemetry telemetry) : base(cultureService, logger, telemetry)
         {
-            _cultureService = cultureService;
-            _logger = logger;
-            _telemetry = telemetry;
         }
+
         public ActionResult GetDocPage(string culture, string docPath)
         {
-            _logger.Log(SharedEnums.LogLevel.Debug, "GetDocPage");
-            _telemetry.TrackEvent("GetDocPage");
+            Logger.Log(SharedEnums.LogLevel.Debug, "GetDocPage");
+            Telemetry.TrackEvent("GetDocPage");
             DocMeta model = new DocMeta();
-            model.DocToc = DocContentManager.GetToc(_cultureService.CurrentCulture, docPath);
-            model.CurrentDocSets = DocContentManager.GetDocSets(_cultureService.CurrentCulture, docPath);
-            model.InnerContent = DocContentManager.GetDocContent(_cultureService.CurrentCulture, docPath);
+            model.DocToc = DocContentManager.GetToc(CultureService.CurrentCulture, docPath);
+            model.CurrentDocSets = DocContentManager.GetDocSets(CultureService.CurrentCulture, docPath);
+            model.InnerContent = DocContentManager.GetDocContent(CultureService.CurrentCulture, docPath);
             model.DocPath = DocContentManager.GetDocShortPath(docPath);
             PreProcessDocModel(model);
             return View(model);
@@ -41,13 +46,13 @@
 
         public ContentResult ClearTocCache(string culture, string productCategory, string docSetCategory)
         {
-            if (string.IsNullOrEmpty(_cultureService.CurrentCulture) || string.IsNullOrEmpty(productCategory) || string.IsNullOrEmpty(docSetCategory))
+            if (string.IsNullOrEmpty(CultureService.CurrentCulture) || string.IsNullOrEmpty(productCategory) || string.IsNullOrEmpty(docSetCategory))
             {
                 return Content("Input paramters are incorrect, please follow below example:<br/>docpage/clearTocCache?cluture=en-us&productCategory=add-ins&docSetCategory=reference");
             }
             else
             {
-                DocContentManager.ClearTocCache(_cultureService.CurrentCulture, productCategory, docSetCategory);
+                DocContentManager.ClearTocCache(CultureService.CurrentCulture, productCategory, docSetCategory);
                 return Content("Specifed Toc Cache cleared");
             }
         }
@@ -60,7 +65,7 @@
 
         public ContentResult ClearDocSetsCache(string culture, string productCategory)
         {
-            DocContentManager.ClearDocSetsCache(_cultureService.CurrentCulture, productCategory);
+            DocContentManager.ClearDocSetsCache(CultureService.CurrentCulture, productCategory);
             return Content("Sepcified docsets Cache cleared");
         }
 

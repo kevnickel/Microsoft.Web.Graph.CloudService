@@ -1,0 +1,13 @@
+﻿@model Microsoft.Web.Graph.WebRole.ViewModels.StaticHtmlViewModel
+
+
+@section Styles {
+    @{
+        foreach (string style in Model.Styles)
+        {
+            <link href=@style rel="stylesheet" type="text/css" />
+        }
+    }
+}
+
+@Html.Raw(Model.StaticContent);

@@ -1,18 +1,23 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+// <copyright file="DocContentManager.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Developed by jnlxu Office Developer Experience Engineering Team 
+// </copyright>
+// <summary>
+//      Retrieve Graph documents from blob storage
+// </summary>
+//------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Net;
-using System.IO;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 using System.Collections.Concurrent;
+using Microsoft.Azure;
+using Microsoft.Web.Portal.Common.Storage;
 
 namespace Microsoft.Web.Graph.WebRole.Util
 {
     public class DocContentManager
     {
-        private static string blobConnectString = "DefaultEndpointsProtocol=https;AccountName=ashirstest;AccountKey=TX6Zkn/STQbiE9GBRK6aF54BwKxpeqoXIN2C9wg0kGtzNebfrkRrKEwGrZjehLwgzfJWXvd47HGOYe1XYrXPUw==";
         private static string docBlobContainer = "dynamicdoc";
         private static ConcurrentDictionary<string, Toc> tocDic = new ConcurrentDictionary<string, Toc>();
         private static ConcurrentDictionary<string, DocSets> docSetsDic = new ConcurrentDictionary<string, DocSets>();
@@ -37,7 +42,7 @@ namespace Microsoft.Web.Graph.WebRole.Util
             if (result == null)
             {
                 string tocFilePath = productCategory + "/" + docSetCategory + "/toc.xml";
-                string tocContent = BlobManager.ReadContent(blobConnectString, docBlobContainer, culture, tocFilePath);
+                string tocContent = BlobManager.ReadContent(CloudConfigurationManager.GetSetting("StorageConnectionString"), docBlobContainer, culture, tocFilePath);
                 if (tocContent != null)
                 {
                     result = XmlReader.GetOject<Toc>(tocContent);
@@ -67,7 +72,7 @@ namespace Microsoft.Web.Graph.WebRole.Util
             if (result == null)
             {
                 string docSetFilePath = productCategory + "/DocSets.xml";
-                string docSetContent = BlobManager.ReadContent(blobConnectString, docBlobContainer, culture, docSetFilePath);
+                string docSetContent = BlobManager.ReadContent(CloudConfigurationManager.GetSetting("StorageConnectionString"), docBlobContainer, culture, docSetFilePath);
 
                 if (docSetContent != null)
                 {
@@ -100,7 +105,7 @@ namespace Microsoft.Web.Graph.WebRole.Util
 
         public static string GetDocContent(string culture,string docPath)
         {
-            return BlobManager.ReadContent(blobConnectString, docBlobContainer, culture, docPath+".htm");
+            return BlobManager.ReadContent(CloudConfigurationManager.GetSetting("StorageConnectionString"), docBlobContainer, culture, docPath+".htm");
         }
 
         public static void ClearTocCache()
