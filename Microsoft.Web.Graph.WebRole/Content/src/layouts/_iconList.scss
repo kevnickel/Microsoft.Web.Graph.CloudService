@@ -19,6 +19,11 @@
     padding: 30px;
 }
 
+.dxportal-iconList-cell-white-220px {
+    @extend .ms-bgColor-white;
+    @include dxportal-iconList-cell(220px);
+}
+
 .dxportal-iconList-image-col {
 	@extend .ms-Grid-col;
 	@extend .ms-u-sm12;

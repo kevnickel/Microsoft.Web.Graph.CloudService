@@ -16,3 +16,11 @@
 	display: block;
     margin: auto;
 }
+
+.dxportal-two-col {
+	@extend .ms-Grid-col;
+	@extend .ms-u-sm6;
+    @extend .ms-font-m-plus;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
