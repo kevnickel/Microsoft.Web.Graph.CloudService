@@ -8,28 +8,33 @@
 // </summary>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web.Mvc;
-using Microsoft.OfficeDevPortals.Shared.Enums;
-using Microsoft.OfficeDevPortals.Shared.Logging;
-using Microsoft.OfficeDevPortals.Shared.Telemetry;
-using Microsoft.OfficeDevPortals.Shared.Culture;
-using Microsoft.OfficeDevPortals.Shared.Storage;
-using Microsoft.Web.Graph.WebRole.Models;
-using Microsoft.Web.Graph.WebRole.ViewModels;
-
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
+    using Models.StaticDocuments;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Web.Mvc;
+    using OfficeDevPortals.Shared.Enums;
+    using OfficeDevPortals.Shared.Logging;
+    using OfficeDevPortals.Shared.Telemetry;
+    using OfficeDevPortals.Shared.Culture;
+    using OfficeDevPortals.Shared.Storage;
+    using ViewModels;
+
     public class StaticPageController : BaseController
     {
+        /// <summary>
+        /// Used to retrieve documents
+        /// </summary>
         private readonly IStaticPageStorage _docStorage;
+        /// <summary>
+        /// List of static pages the controller will retrieve
+        /// </summary>
         private readonly List<StaticDocument> _documents;
 
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="StaticPageController"/> class
         /// </summary>
         /// <param name="cultureService">Culture service for this instance</param>
         /// <param name="logger">Logger to use for this instance</param>
@@ -51,18 +56,20 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
         /// <returns>The html document from storage</returns>
         public ActionResult GetStaticPage(string docName)
         {
-            this.Logger.Log(SharedEnums.LogLevel.Information, String.Format(CultureInfo.InvariantCulture, "Retrieve document '{0}' from blob", docName));
+            this.Logger.Log(SharedEnums.LogLevel.Information, string.Format(CultureInfo.InvariantCulture, "Retrieve document '{0}' from blob", docName));
 
             StaticHtmlViewModel model = new StaticHtmlViewModel(HttpContext.ApplicationInstance.Context);
             model.PageTitle = this._documents
                 .Where(doc => doc.DocName == docName)
                 .Select(doc => doc.DocTitle).First();
             this.Logger.Log(SharedEnums.LogLevel.Information,
-                String.Format(CultureInfo.InvariantCulture, "Found document title '{0}' for document '{1}'", model.PageTitle,
+                string.Format(CultureInfo.InvariantCulture,
+                "Found document title '{0}' for document '{1}'", 
+                model.PageTitle,
                     docName));
             model.Styles = new string[] { "/" + CultureService.CurrentCulture + "/graph-test/Content/build/css/msgraph-portal.css" };
-            model.StaticContent = this._docStorage.GetStaticPageContent(docName, CultureService.CurrentCulture.ToLower());
-            this.Logger.Log(SharedEnums.LogLevel.Information, String.Format(CultureInfo.InvariantCulture, "Found content for '{0}': {1}", docName, !String.IsNullOrEmpty(model.StaticContent)));
+            model.StaticContent = this._docStorage.GetContent(docName, CultureService.CurrentCulture.ToLower());
+            this.Logger.Log(SharedEnums.LogLevel.Information, string.Format(CultureInfo.InvariantCulture, "Found content for '{0}': {1}", docName, !string.IsNullOrEmpty(model.StaticContent)));
 
             return View(model);
         }

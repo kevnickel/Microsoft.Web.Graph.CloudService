@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="BlobManaer.cs" company="Microsoft Corporation">
+// <copyright file="BlobManager.cs" company="Microsoft Corporation">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 //     Developed by jnlxu Office Developer Experience Engineering Team 
 // </copyright>
@@ -8,18 +8,20 @@
 // </summary>
 //------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.Web.Portal.Common.Storage
 {
+    using System.IO;
+    using WindowsAzure.Storage;
+    using WindowsAzure.Storage.Blob;
+
     /// <summary>
     /// Read content from an Azure blob
     /// </summary>
     public class BlobManager
     {
+        /// <summary>
+        /// Culture to fall back to if specified culture is not found
+        /// </summary>
         private const string DefaultCulture = "en-us";
 
         /// <summary>
@@ -38,18 +40,19 @@ namespace Microsoft.Web.Portal.Common.Storage
         /// Read the content using the localized path specified
         /// </summary>
         /// <param name="connectString">The connection string for blob storage</param>
-        /// <param name="containter">The container to read from</param>
+        /// <param name="container">The container to read from</param>
         /// <param name="culture">The culture to look under for the file</param>
         /// <param name="path">The path to the file to read under the localized folder</param>
         /// <returns>The contents of the specified blob</returns>
-        public static string ReadContent(string connectString, string containter, string culture, string path)
+        public static string ReadContent(string connectString, string container, string culture, string path)
         {
-            culture = culture.ToLower();
-            string result = ReadContentInternal(connectString, containter, culture + "/" + path);
+            culture = culture?.ToLower();
+            string result = ReadContentInternal(connectString, container, culture + "/" + path);
             if(result==null&&(!DefaultCulture.Equals(culture)))
             {
-                result = ReadContentInternal(connectString, containter, DefaultCulture + "/" + path);
+                result = ReadContentInternal(connectString, container, DefaultCulture + "/" + path);
             }
+
             return result;
         }
 

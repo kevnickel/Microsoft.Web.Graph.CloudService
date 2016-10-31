@@ -8,27 +8,34 @@
 // </summary>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using Microsoft.OfficeDevPortals.Shared.Storage;
-using Microsoft.Azure;
-
 namespace Microsoft.Web.Portal.Common.Storage
 {
+    using System.Globalization;
+    using OfficeDevPortals.Shared.Storage;
+    using Azure;
+
     public class BlobStaticPageStorage : IStaticPageStorage
     {
+        /// <summary>
+        /// Name of the container to find the pages
+        /// </summary>
+        /// <remarks>To be updated when container is finalized</remarks>
         private const string ContainerName = "kevinsdocs";
+
+        /// <summary>
+        /// The path to find the static html. First parameter is culture, second is filename.
+        /// </summary>
         private const string Path = "graph-pages/{0}/{1}.htm";
 
         /// <summary>
         /// Retrieve the specified document from blob storage
         /// </summary>
         /// <param name="docName">The name of the document</param>
-        /// <param name="culture">The culture of the document to retrieve</param>
+        /// <param name="docCulture">The culture of the document to retrieve</param>
         /// <returns>HTML content of the document</returns>
-        public string GetStaticPageContent(string docName, string culture)
+        public string GetContent(string docName, string docCulture)
         {
-            string docPath = String.Format(CultureInfo.InvariantCulture, Path, culture, docName);
+            string docPath = string.Format(CultureInfo.InvariantCulture, Path, docCulture, docName);
             return BlobManager.ReadContent(CloudConfigurationManager.GetSetting("StorageConnectionString"), ContainerName, docPath);
         }
     }

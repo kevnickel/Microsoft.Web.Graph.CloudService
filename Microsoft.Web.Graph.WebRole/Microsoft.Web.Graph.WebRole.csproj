@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -194,7 +195,8 @@
     </Compile>
     <Compile Include="Models\DocMeta.cs" />
     <Compile Include="Models\DocSets.cs" />
-    <Compile Include="Models\StaticDocument.cs" />
+    <Compile Include="Models\StaticDocuments\CodeSamplesAndSdks.cs" />
+    <Compile Include="Models\StaticDocuments\StaticDocument.cs" />
     <Compile Include="Models\Toc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\GraphExplorer\Index.Designer.cs">

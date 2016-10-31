@@ -8,7 +8,7 @@
 // </summary>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Web.Graph.WebRole.Models
+namespace Microsoft.Web.Graph.WebRole.Models.StaticDocuments
 {
     /// <summary>
     /// A generic document
@@ -18,28 +18,22 @@ namespace Microsoft.Web.Graph.WebRole.Models
         protected string _docName;
         protected string _docTitle;
 
+        /// <summary>
+        /// The name of the document
+        /// </summary>
         public string DocName
         {
             get { return _docName; }
             set { _docName = value; }
         }
 
+        /// <summary>
+        /// The title of the document
+        /// </summary>
         public string DocTitle
         {
             get { return _docTitle; }
             set { _docTitle = value; }
-        }
-    }
-
-    /// <summary>
-    /// Code Samples & SDKs page
-    /// </summary>
-    public class CodeSamplesAndSdks : StaticDocument
-    {
-        public CodeSamplesAndSdks()
-        {
-            this.DocName = "code-samples-and-sdks";
-            this.DocTitle = Resources.StaticPage.Index.SAMPLES_AND_SDKS_TITLE;
         }
     }
 }
