@@ -121,23 +121,7 @@ IF /I "Microsoft.Web.Graph.CloudService.sln" NEQ "" (
 echo 2. Select node version
 call :SelectNodeVersion
 
-pushd "Microsoft.Web.Graph.WebRole"
-echo 3. Install npm packages
-IF EXIST "package.json" (
-  echo Run npm install command
-  call :ExecuteCmd !NPM_CMD! install
-  IF !ERRORLEVEL! NEQ 0 goto error
-)
-
-echo 4. Run gulp tasks
-IF EXIST "gulpfile.js" (
-  echo Run deploy command of gulfile
-  call :ExecuteCmd !GULP_CMD! deploy --outputFolder "%DEPLOYMENT_TEMP%\\Content\\build"
-  IF !ERRORLEVEL! NEQ 0 goto error
-  )
-popd
-
-echo 5. Build to the temporary path
+echo 3. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\\Microsoft.Web.Graph.WebRole\\Microsoft.Web.Graph.WebRole.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
 ) ELSE (
@@ -145,6 +129,22 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 ) 
 
 IF !ERRORLEVEL! NEQ 0 goto error
+
+pushd "Microsoft.Web.Graph.WebRole"
+echo 4. Install npm packages
+IF EXIST "package.json" (
+  echo Run npm install command
+  call :ExecuteCmd !NPM_CMD! install
+  IF !ERRORLEVEL! NEQ 0 goto error
+)
+
+echo 5. Run gulp tasks
+IF EXIST "gulpfile.js" (
+  echo Run deploy command of gulpfile
+  call :ExecuteCmd !GULP_CMD! deploy --outputFolder "%DEPLOYMENT_TEMP%\Content\build\css"
+  IF !ERRORLEVEL! NEQ 0 goto error
+  )
+popd
 
 echo 6. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
