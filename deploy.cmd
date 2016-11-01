@@ -121,21 +121,18 @@ IF /I "Microsoft.Web.Graph.CloudService.sln" NEQ "" (
 echo 2. Select node version
 call :SelectNodeVersion
 
+pushd "Microsoft.Web.Graph.WebRole"
 echo 3. Install npm packages
-IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
-  echo Run npm install command in %DEPLOYMENT_SOURCE%
-  pushd "%DEPLOYMENT_SOURCE%"
+IF EXIST "package.json" (
+  echo Run npm install command
   call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error
-  popd
 )
 
 echo 4. Run gulp tasks
-IF EXIST "%DEPLOYMENT_SOURCE%\gulpfile.js" (
-  pushd "%DEPLOYMENT_SOURCE%"
-  echo Run gulp tasks in %DEPLOYMENT_SOURCE%
+IF EXIST "gulpfile.js" (
+  echo Run deploy command of gulfile
   call :ExecuteCmd !GULP_CMD! deploy --outputFolder %DEPLOYMENT_TEMP%
-  popd
   IF !ERRORLEVEL! NEQ 0 goto error
   )
 
