@@ -26,6 +26,8 @@
   <CollectionProperty Name="RecognizedWords">
     <Value>odxip</Value>
     <Value>odxipgraph</Value>
+    <Value>SDK</Value>
+    <Value>Optimizely</Value>
   </CollectionProperty>
 </GlobalSettings>
 </StyleCopSettings>
