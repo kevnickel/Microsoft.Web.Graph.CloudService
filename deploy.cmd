@@ -132,9 +132,10 @@ IF EXIST "package.json" (
 echo 4. Run gulp tasks
 IF EXIST "gulpfile.js" (
   echo Run deploy command of gulfile
-  call :ExecuteCmd !GULP_CMD! deploy --outputFolder %DEPLOYMENT_TEMP%
+  call :ExecuteCmd !GULP_CMD! deploy --outputFolder "%DEPLOYMENT_TEMP%\\Content\\build"
   IF !ERRORLEVEL! NEQ 0 goto error
   )
+popd
 
 echo 5. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
