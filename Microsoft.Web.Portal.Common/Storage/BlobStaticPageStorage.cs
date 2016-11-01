@@ -35,7 +35,7 @@ namespace Microsoft.Web.Portal.Common.Storage
         /// <returns>HTML content of the document</returns>
         public string GetContent(string docName, string docCulture)
         {
-            string docPath = string.Format(CultureInfo.InvariantCulture, Path, docCulture, docName);
+            string docPath = string.Format(CultureInfo.InvariantCulture, Path, docCulture.ToLower(CultureInfo.InvariantCulture), docName);
             return BlobManager.ReadContent(CloudConfigurationManager.GetSetting("StorageConnectionString"), ContainerName, docPath);
         }
     }

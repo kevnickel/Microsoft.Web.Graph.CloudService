@@ -8,15 +8,15 @@
 // </summary>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Web.Graph.WebRole.Models.StaticDocuments
+namespace Microsoft.Web.Graph.WebRole.Models
 {
     /// <summary>
     /// A generic document
     /// </summary>
     public abstract class StaticDocument
     {
-        protected string _docName;
-        protected string _docTitle;
+        private string _docName;
+        private string _docTitle;
 
         /// <summary>
         /// The name of the document

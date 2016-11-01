@@ -19,7 +19,7 @@ using Microsoft.Web.Portal.Common.Logging;
 using Microsoft.Web.Portal.Common.Storage;
 using Microsoft.Web.Portal.Common.Telemetry;
 
-namespace Microsoft.Web.Graph.WebRole.App_Start
+namespace Microsoft.Web.Graph.WebRole
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.

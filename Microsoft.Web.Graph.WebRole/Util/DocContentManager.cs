@@ -14,7 +14,7 @@ using System.Collections.Concurrent;
 using Microsoft.Azure;
 using Microsoft.Web.Portal.Common.Storage;
 
-namespace Microsoft.Web.Graph.WebRole.Util
+namespace Microsoft.Web.Graph.WebRole.Utilities
 {
     public class DocContentManager
     {

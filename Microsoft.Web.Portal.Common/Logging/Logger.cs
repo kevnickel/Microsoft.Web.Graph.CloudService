@@ -42,10 +42,10 @@ namespace Microsoft.Web.Portal.Common.Logging
         /// Log method for loosely coupling loggers
         /// </summary>
         /// <param name="logLevel">log level</param>
-        /// <param name="message">message to log</param>
-        public void Log(LogLevel logLevel, string message)
+        /// <param name="value">message to log</param>
+        public void Log(LogLevel logLevel, string value)
         {
-            Contract.Requires(!string.IsNullOrEmpty(message));
+            Contract.Requires(!string.IsNullOrEmpty(value));
 
             ////TODO LOGGING CODE
         }

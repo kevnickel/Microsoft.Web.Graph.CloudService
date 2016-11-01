@@ -8,17 +8,17 @@
 // </summary>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Web.Graph.WebRole.Models.StaticDocuments
+namespace Microsoft.Web.Graph.WebRole.Models
 {
     /// <summary>
     /// Code Samples & SDKs page
     /// </summary>
-    public class CodeSamplesAndSdks : StaticDocument
+    public class CodeSamplesAndSDKs : StaticDocument
     {
         /// <summary>
         /// Default constructor
         /// </summary>
-        public CodeSamplesAndSdks()
+        public CodeSamplesAndSDKs()
         {
             this.DocName = "code-samples-and-sdks";
             this.DocTitle = Resources.StaticPage.Index.SAMPLES_AND_SDKS_TITLE;

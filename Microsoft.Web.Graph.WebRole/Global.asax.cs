@@ -22,7 +22,7 @@ namespace Microsoft.Web.Graph.WebRole
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            ICultureService cultureService = App_Start.UnityConfig.GetConfiguredContainer().Resolve<ICultureService>();
+            ICultureService cultureService = UnityConfig.GetConfiguredContainer().Resolve<ICultureService>();
             cultureService.SetCurrentCulture(base.Context.Request);
         }
     }

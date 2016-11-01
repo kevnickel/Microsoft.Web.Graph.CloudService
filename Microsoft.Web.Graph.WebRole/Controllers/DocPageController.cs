@@ -11,9 +11,10 @@
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
     using System;
+    using System.Globalization;
     using System.Web.Mvc;
-    using Microsoft.Web.Graph.WebRole.Util;
-    using DynamicDocs.Models;
+    using Microsoft.Web.Graph.WebRole.Models;
+    using Microsoft.Web.Graph.WebRole.Utilities;
     using Microsoft.OfficeDevPortals.Shared.Enums;
     using Microsoft.OfficeDevPortals.Shared.Telemetry;
     using Microsoft.OfficeDevPortals.Shared.Logging;
@@ -25,9 +26,9 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
         {
         }
 
-        public ActionResult GetDocPage(string culture, string docPath)
+        public ActionResult GetDocPage(string docPath)
         {
-            Logger.Log(SharedEnums.LogLevel.Debug, "GetDocPage");
+            Logger.Log(SharedEnums.LogLevel.Debug, string.Format(CultureInfo.InvariantCulture, "Retrieving document at '{0}'", docPath));
             Telemetry.TrackEvent("GetDocPage");
             DocMeta model = new DocMeta();
             model.DocToc = DocContentManager.GetToc(CultureService.CurrentCulture, docPath);
@@ -44,7 +45,7 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
             return Content("All Toc Cache cleared");
         }
 
-        public ContentResult ClearTocCache(string culture, string productCategory, string docSetCategory)
+        public ContentResult ClearTocCache(string productCategory, string docSetCategory)
         {
             if (string.IsNullOrEmpty(CultureService.CurrentCulture) || string.IsNullOrEmpty(productCategory) || string.IsNullOrEmpty(docSetCategory))
             {
@@ -63,7 +64,7 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
             return Content("All docsets Cache cleared");
         }
 
-        public ContentResult ClearDocSetsCache(string culture, string productCategory)
+        public ContentResult ClearDocSetsCache(string productCategory)
         {
             DocContentManager.ClearDocSetsCache(CultureService.CurrentCulture, productCategory);
             return Content("Sepcified docsets Cache cleared");

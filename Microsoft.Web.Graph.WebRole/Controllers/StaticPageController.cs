@@ -10,7 +10,7 @@
 
 namespace Microsoft.Web.Graph.WebRole.Controllers
 {
-    using Models.StaticDocuments;
+    using Models;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
@@ -45,7 +45,7 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
             this._docStorage = docStorage;
             this._documents = new List<StaticDocument>()
             {
-                new CodeSamplesAndSdks()
+                new CodeSamplesAndSDKs()
             };
         }
 
@@ -67,8 +67,10 @@ namespace Microsoft.Web.Graph.WebRole.Controllers
                 "Found document title '{0}' for document '{1}'", 
                 model.PageTitle,
                     docName));
-            model.Styles = new string[] { "/" + CultureService.CurrentCulture + "/graph-test/Content/build/css/msgraph-portal.css" };
-            model.StaticContent = this._docStorage.GetContent(docName, CultureService.CurrentCulture.ToLower());
+            model.Styles.Add(
+                "/" + CultureService.CurrentCulture + "/graph-test/Content/build/css/msgraph-portal.css"
+                );
+            model.StaticContent = this._docStorage.GetContent(docName, CultureService.CurrentCulture);
             this.Logger.Log(SharedEnums.LogLevel.Information, string.Format(CultureInfo.InvariantCulture, "Found content for '{0}': {1}", docName, !string.IsNullOrEmpty(model.StaticContent)));
 
             return View(model);

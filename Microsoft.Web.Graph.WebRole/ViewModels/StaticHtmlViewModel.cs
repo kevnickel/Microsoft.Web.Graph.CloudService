@@ -10,6 +10,7 @@
 
 namespace Microsoft.Web.Graph.WebRole.ViewModels
 {
+    using System.Collections.ObjectModel;
     using System.Web;
 
     /// <summary>
@@ -17,13 +18,17 @@ namespace Microsoft.Web.Graph.WebRole.ViewModels
     /// </summary>
     public class StaticHtmlViewModel : ViewModelBase
     {
+        private Collection<string> _styles;
+         
         /// <summary>
         /// Constructure
         /// </summary>
         /// <param name="context">HttpContext for this ViewModel</param>
         public StaticHtmlViewModel(HttpContext context) : base(context)
         {
+            this._styles = new Collection<string>();
         }
+
 
         /// <summary>
         /// The HTML to display
@@ -33,6 +38,12 @@ namespace Microsoft.Web.Graph.WebRole.ViewModels
         /// <summary>
         /// URI's of css used by StaticContent
         /// </summary>
-        public string[] Styles { get; set; }
+        public Collection<string> Styles
+        {
+            get
+            {
+                return this._styles;
+            }
+        }
     }
 }
