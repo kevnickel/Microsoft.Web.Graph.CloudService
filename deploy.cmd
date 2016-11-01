@@ -123,6 +123,7 @@ call :SelectNodeVersion
 
 echo 3. Install npm packages
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
+  echo Run npm install command in %DEPLOYMENT_TARGET%
   pushd "%DEPLOYMENT_TARGET%"
   call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error
@@ -132,7 +133,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 echo 4. Run gulp tasks
 IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
   pushd "%DEPLOYMENT_TARGET%"
-  echo Run gulp tasks in %DEPLOYMENT_TEMP%
+  echo Run gulp tasks in %DEPLOYMENT_TARGET%
   call :ExecuteCmd !GULP_CMD! deploy --outputFolder %DEPLOYMENT_TEMP%
   popd
   IF !ERRORLEVEL! NEQ 0 goto error
