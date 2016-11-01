@@ -27,7 +27,7 @@ namespace Microsoft.Web.Graph.WebRole
             filters.Add(new HandleErrorAttribute());
             if (ValidateFrontDoorCert)
             {
-                filters.Add(new Filters.ValidateFrontDoorCertificateAttribute());
+                filters.Add(new ValidateFrontDoorCertificateAttribute());
             }
         }
     }

@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="PRAGMA" content="@Model.Pragma">
     <meta http-equiv="Cache-control" content="@Model.CacheControl">
+    @RenderSection("Styles", required:false);
+
     <title>@Model.PageTitle</title>
     <script src="@Model.OptimizelyUrl"></script>
    

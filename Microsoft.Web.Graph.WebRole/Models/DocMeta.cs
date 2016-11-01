@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿//------------------------------------------------------------------------------
+// <copyright file="DocMeta.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Developed by jnlxu Office Developer Experience Engineering Team 
+// </copyright>
+// <summary>
+//      Meta data for a dynamic document
+// </summary>
+//------------------------------------------------------------------------------
 
-namespace DynamicDocs.Models
+namespace Microsoft.Web.Graph.WebRole.Models
 {
+    /// <summary>
+    /// Meta data for a dynamic document
+    /// </summary>
     public class DocMeta
     {
         public Toc DocToc { get; set; }

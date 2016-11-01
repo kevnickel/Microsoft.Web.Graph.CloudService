@@ -20,7 +20,7 @@ namespace Microsoft.OfficeDevPortals.Shared.Logging
         /// Logs the message
         /// </summary>
         /// <param name="logLevel">log level</param>
-        /// <param name="message">message to log</param>
-        void Log(LogLevel logLevel, string message);
+        /// <param name="value">message to log</param>
+        void Log(LogLevel logLevel, string value);
     }
 }

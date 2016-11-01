@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 using System.IO;
 
 
-namespace Microsoft.Web.Graph.WebRole.Util
+namespace Microsoft.Web.Graph.WebRole.Utilities
 {
     public class XmlReader
     {

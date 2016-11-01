@@ -1,9 +1,20 @@
-﻿using System.Web;
+﻿//------------------------------------------------------------------------------
+// <copyright file="ViewModelBase.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Developed by ashirs Office Developer Experience Engineering Team 
+// </copyright>
+// <summary>
+//      Base class for all the View models, all view models must be derived from here
+// </summary>
+//------------------------------------------------------------------------------
 
 namespace Microsoft.Web.Graph.WebRole.ViewModels
 {
+    using System;
+    using System.Web;
+
     /// <summary>
-    /// Base class for all the View models, all view models must be dervied from here
+    /// Base class for all the View models, all view models must be derived from here
     /// </summary>
     public class ViewModelBase
     {
@@ -43,11 +54,11 @@ namespace Microsoft.Web.Graph.WebRole.ViewModels
         /// <summary>
         /// returns the optimizlyUrl
         /// </summary>
-        public string OptimizelyUrl
+        public Uri OptimizelyUrl
         {
             get
             {
-                return IsTestEnvironment ? "https://cdn.optimizely.com/js/5703400067.js" : "https://cdn.optimizely.com/js/5657941311.js";
+                return IsTestEnvironment ? new Uri("https://cdn.optimizely.com/js/5703400067.js") : new Uri("https://cdn.optimizely.com/js/5657941311.js");
             }
         }
 

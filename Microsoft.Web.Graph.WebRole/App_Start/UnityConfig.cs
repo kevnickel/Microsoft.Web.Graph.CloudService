@@ -1,14 +1,25 @@
+//------------------------------------------------------------------------------
+// <copyright file="UnityConfig.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Developed by ashirs Office Developer Experience Engineering Team 
+// </copyright>
+// <summary>
+//      Specifies the Unity configuration for the main container.
+// </summary>
+//------------------------------------------------------------------------------
+
 using System;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 using Microsoft.OfficeDevPortals.Shared.Telemetry;
 using Microsoft.OfficeDevPortals.Shared.Logging;
 using Microsoft.OfficeDevPortals.Shared.Culture;
+using Microsoft.OfficeDevPortals.Shared.Storage;
 using Microsoft.Web.Portal.Common.Culture;
 using Microsoft.Web.Portal.Common.Logging;
+using Microsoft.Web.Portal.Common.Storage;
 using Microsoft.Web.Portal.Common.Telemetry;
 
-namespace Microsoft.Web.Graph.WebRole.App_Start
+namespace Microsoft.Web.Graph.WebRole
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -46,6 +57,7 @@ namespace Microsoft.Web.Graph.WebRole.App_Start
             container.RegisterType<ICultureService, CultureService>(new InjectionConstructor(new string [] { env.DefaultCulture, env.SupportedCultures}));
             container.RegisterType<ILogger, Logger>(new InjectionConstructor(env.ApplicationName));
             container.RegisterType<ITelemetry, ApplicationInsightsTelemetry>();
+            container.RegisterType<IStaticPageStorage, BlobStaticPageStorage>();
         }
     }
 }

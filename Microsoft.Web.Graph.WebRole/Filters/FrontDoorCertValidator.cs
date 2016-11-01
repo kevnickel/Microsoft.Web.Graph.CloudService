@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Web.Graph.WebRole.Filters
+﻿namespace Microsoft.Web.Graph.WebRole
 {
     using System;
     using System.Configuration;
