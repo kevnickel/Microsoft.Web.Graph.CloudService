@@ -252,6 +252,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    </EmbeddedResource>
+    <Content Include="Content\src\layouts\_iconList.scss" />
+    <Content Include="Content\src\layouts\_layouts.scss" />
+    <Content Include="Content\src\layouts\_banner.scss" />
+    <Content Include="Content\src\app.scss" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <EmbeddedResource Include="Resources\GraphExplorer\Index.de-de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
