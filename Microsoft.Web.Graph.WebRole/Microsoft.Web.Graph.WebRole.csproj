@@ -92,9 +92,6 @@
       <HintPath>..\packages\Microsoft.Web.Administration.7.0.0.0\lib\net20\Microsoft.Web.Administration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Portal.Common">
-      <HintPath>..\Microsoft.Web.Portal.Common\bin\Debug\Microsoft.Web.Portal.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
       <Private>True</Private>
@@ -343,6 +340,10 @@
     <ProjectReference Include="..\Microsoft.OfficeDevPortals.Shared\Microsoft.OfficeDevPortals.Shared.csproj">
       <Project>{df6b7ecb-ab09-4c31-a363-ff72af50944a}</Project>
       <Name>Microsoft.OfficeDevPortals.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Web.Portal.Common\Microsoft.Web.Portal.Common.csproj">
+      <Project>{ac114012-37cb-427f-b981-93f8baba2306}</Project>
+      <Name>Microsoft.Web.Portal.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
